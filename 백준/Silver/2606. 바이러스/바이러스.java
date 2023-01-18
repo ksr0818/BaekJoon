@@ -11,27 +11,24 @@ public class Main {
         int m = sc.nextInt(); // 간선의 수
 
         graph=new int[n+1][n+1];
-        isVisited = new int[n+1];
+        isVisited = new boolean[n+1];
         for(int i=0;i<m;i++) { // 그래프 만들기
             int a=sc.nextInt();
             int b = sc.nextInt();
             graph[a][b]=1;
             graph[b][a]=1;
-
         }
 
         virus(1);
-
-
     }
-    
+
     static int graph[][];
-    static int[] isVisited;
+    static boolean[] isVisited;
 
     public static void virus(int num){
     Queue<Integer> queue = new LinkedList<>();
 
-    isVisited[num] =1;
+    isVisited[num] = true;
     queue.add(num);
 
     int infection = 0;
@@ -39,9 +36,9 @@ public class Main {
         int a = queue.poll();
 
         for (int i=0; i< graph.length; i++) {
-            if (graph[a][i] == 1 && isVisited[i] != 1) {
+            if (graph[a][i] == 1 && !isVisited[i]) {
                 queue.add(i);
-                isVisited[i] = 1;
+                isVisited[i] = true;
                 infection++;
             }
         }
