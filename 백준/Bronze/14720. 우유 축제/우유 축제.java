@@ -24,17 +24,17 @@ public class Main {
             if (input[i] ==next && next== 0) {
                 count++;
                 next=1;
-                continue;
+
             }
             else if(input[i] ==next && next== 1) {
                 count++;
                 next=2;
-                continue;
+
             }
             else if(input[i] ==next && input[i]== 2) {
                 count++;
                 next=0;
-                continue;
+
             }
         }
         System.out.println(count);
