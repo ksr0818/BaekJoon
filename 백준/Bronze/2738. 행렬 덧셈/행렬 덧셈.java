@@ -7,8 +7,6 @@ public class Main {
         int M = sc.nextInt();
         int[][] matrix1 = new int[N][M];
         int[][] matrix2 = new int[N][M];
-        int[][] matrix3 = new int[N][M];
-
 
         for (int i =0; i <N; i++) {
             for (int j=0; j < M; j++) {
