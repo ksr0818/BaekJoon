@@ -2,14 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        
         // 스캐너 설정
         Scanner sc = new Scanner(System.in);
 
         // 문자열 타입 변수 선언 및 초기화
         String str = "";
-
-        // 문자 타입 변수 선언 및 초기화
-        char ch = '0';
 
         // 합을 구할 int 변수 선언 및 초기화
         int num = 0;
