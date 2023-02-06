@@ -3,29 +3,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)  {
-
-
+        
         // 스캐너 설정
         Scanner sc = new Scanner(System.in);
-        
+
         // 알파벳 있는 문자열 선언 및 초기화
 
         String abc = "abcdefghijklmnopqrstuvwxyz";
         char[] charr = abc.toCharArray();
 
-
-
-        // 문자 선언 및 초기화
+        // 해쉬맵 선언
         HashMap<Character, Integer> hashMap = new HashMap<>();
-
+        
+        // hasNextLine을 while문의 조건식으로 작성
         while(sc.hasNextLine()) {
-
+            
+            // 한 줄씩 str로 받기
             String str = sc.nextLine();
 
+            // for 반복문을 통해 hashMap에 값 넣어주기
             for (int i= 0; i < str.length(); i++) {
+                
+                // 만약 hashMap key에 문자가 있다면 기존 value값에 +1 할당
                 if (hashMap.containsKey(str.charAt(i))) {
                     hashMap.put(str.charAt(i), hashMap.get(str.charAt(i))+1);
                 }
+                
+                // 만약 hashMap key에 문자가 있다면 value값에 1 할당
                 else hashMap.put(str.charAt(i), 1);
             }
         }
@@ -48,8 +52,10 @@ public class Main {
 
             }
         }
+        // 결과 값 출력
         System.out.println(result);
         
+        //scanner 닫기
         sc.close();
     }
 }
