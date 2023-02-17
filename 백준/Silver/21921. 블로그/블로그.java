@@ -1,14 +1,21 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int N = scanner.nextInt();
-        int X = scanner.nextInt();
-        int[] visitant = new int[N];
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(bf.readLine());
 
-        for (int i = 0; i < N; i++) {
-            visitant[i] = scanner.nextInt();
+        int n = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+
+        int[] arr = new int[n];
+
+        st = new StringTokenizer(bf.readLine());
+        for(int i=0;i<n;i++){
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         int end = 0;
@@ -16,24 +23,24 @@ public class Main {
         int max = 0;
         int count = 1;
 
-        for (int i = 0; i < N; i++){
-            while ((end - i < X) && end < N){  // X일 만큼 범위 이동
-                sum += visitant[end];
+        for(int i=0;i<n;i++){
+            while((end-i<x) && end<n){
+                sum += arr[end];
                 end++;
             }
 
-            if (max == sum){
+            if(max == sum){
                 count++;
             }
-            else if(max < sum){
+            else if(max<sum){
                 max = sum;
                 count = 1;
             }
 
-            sum -= visitant[i];
+            sum -=arr[i];
         }
 
-        if (max == 0){
+        if(max == 0){
             System.out.println("SAD");
             return;
         }
