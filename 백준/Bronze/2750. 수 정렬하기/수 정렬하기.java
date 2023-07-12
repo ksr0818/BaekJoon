@@ -1,28 +1,23 @@
-import java.math.BigDecimal;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]){
-
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
         List<Integer> numList = new ArrayList<>();
 
         for (int i =0; i < N; i++) {
-            int num = sc.nextInt();
-            if (numList.contains(num)) {
-                continue;
-            }
-            numList.add(num);
+            numList.add(sc.nextInt());
         }
 
         Collections.sort(numList);
 
-        for (int a : numList) {
-            System.out.println(a);
+        for (int i=0; i < N; i++) {
+            System.out.println(numList.get(i));
         }
-
     }
 }
