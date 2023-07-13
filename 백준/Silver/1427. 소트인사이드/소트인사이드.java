@@ -1,20 +1,31 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
-
         String str = sc.nextLine();
-        List<Character> charList = new ArrayList<>();
-        for (int i =0; i < str.length(); i++) {
-            charList.add(str.charAt(i));
+        int A[] = new int[str.length()];
+        for (int i =0; i < str.length(); i++){
+            A[i] = Integer.parseInt(str.substring(i,i+1));
         }
-        Collections.sort(charList,Collections.reverseOrder());
+        for(int i=0; i<str.length(); i++) {
+            int max = i;
+            for (int j= i+1; j < str.length(); j++){
+                if (A[j] > A[max])
+                    max = j;
+            }
+            if (A[i] < A[max]) {
+                int temp = A[i];
+                A[i] = A[max];
+                A[max] = temp;
+            }
+        }
 
-        for(char a : charList) {
-            System.out.print(a);
+        for (int i=0; i < str.length(); i++) {
+            System.out.print(A[i]);
         }
+
     }
 }
