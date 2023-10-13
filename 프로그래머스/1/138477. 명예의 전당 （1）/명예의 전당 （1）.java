@@ -8,10 +8,13 @@ class Solution {
         
         for (int i =0; i < score.length; i++) {
             list.add(score[i]);
+            
             Collections.sort(list, Collections.reverseOrder());
+            
             if (list.size() >k) {
                 list.remove(k);
             }
+            
             if (i <=k-1) answer[i] = list.get(i);
             else answer[i] = list.get(k-1);
         }
