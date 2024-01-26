@@ -1,0 +1,91 @@
+import java.io.*;
+import java.math.*;
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        // TODO Auto-generated method stub
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int num = Integer.parseInt(br.readLine());
+
+        int arr[] = new int[num];
+        int strike[] = new int[num];
+        int ball[] = new int[num];
+        int count = 0;
+
+        for(int i=0; i<num; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            arr[i] = Integer.parseInt(st.nextToken());
+            strike[i] = Integer.parseInt(st.nextToken());
+            ball[i] = Integer.parseInt(st.nextToken());
+        }
+
+        for(int i=123; i<=987; i++) {
+            int strike_cnt =0;
+            int ball_cnt = 0;
+            int check = 0;
+
+            if(i/100 == i/10%10)continue;
+            else if(i/10%10 == i%10) continue;
+            else if(i/100 == i%10) continue;
+
+            if(i/10%10 == 0) continue;
+            if(i%10 == 0) continue;
+
+            for(int j=0; j<strike.length; j++) {
+                strike_cnt = 0;
+                ball_cnt = 0;
+                if(arr[j]/100 == i/100) {
+                    strike_cnt++;
+                }
+                else {
+                    if(arr[j]/10%10 ==i/100) {
+                        ball_cnt++;
+                    }
+                    else if(arr[j]%10 == i/100) {
+                        ball_cnt++;
+                    }
+                }
+                if(arr[j]/10%10== i/10%10) {
+                    strike_cnt++;
+                }
+                else {
+                    if(arr[j]/100 ==i/10%10) {
+                        ball_cnt++;
+                    }
+                    else if(arr[j]%10 == i/10%10) {
+                        ball_cnt++;
+                    }
+                }
+                if(arr[j]%10 == i%10) {
+                    strike_cnt++;
+                }
+
+                else {
+                    if(arr[j]/100 ==i%10) {
+                        ball_cnt++;
+                    }
+                    else if(arr[j]/10%10 == i%10) {
+                        ball_cnt++;
+                    }
+                }
+
+                if(strike[j]!=strike_cnt || ball[j]!=ball_cnt) {
+                    break;
+                }
+                check++;
+                if(check == num) {
+                    count++;
+                }
+            }
+        }
+        bw.write(String.valueOf(count));
+        bw.flush();
+        br.close();
+        bw.close();
+    }
+
+}
